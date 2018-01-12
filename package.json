@@ -1,0 +1,26 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pilotapazzo/trentose2jan12-space.git"
+  },
+  "author": "Davide Farina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pilotapazzo/trentose2jan12-space/issues"
+  },
+  "homepage": "https://github.com/pilotapazzo/trentose2jan12-space#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "connect": "^3.6.5",
+    "express": "^4.16.2",
+    "missing": "0.0.1",
+    "serve-static": "^1.13.1"
+  }
+}
