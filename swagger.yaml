@@ -58,39 +58,21 @@ paths:
           description: unexpected error
           schema:
             $ref: '#/definitions/Error'
-  /pets/{id}:
+  /surname:
     get:
-      description: Returns a user based on a single ID, if the user does not have access to the pet
-      operationId: find pet by id
+      description: Restituisce tutti gli astronauti che hanno un certo cognome
+      operationId: getAstronautsWithSurname
       parameters:
-        - name: id
-          in: path
-          description: ID of pet to fetch
+        - name: surname
+          in: query
+          description: Cognome dell'astronauta
           required: true
-          type: integer
-          format: int64
+          type: string
       responses:
         200:
-          description: pet response
+          description: Elenco degli astronauti
           schema:
-            $ref: '#/definitions/status'
-        default:
-          description: unexpected error
-          schema:
-            $ref: '#/definitions/Error'
-    delete:
-      description: deletes a single pet based on the ID supplied
-      operationId: deletePet
-      parameters:
-        - name: id
-          in: path
-          description: ID of pet to delete
-          required: true
-          type: integer
-          format: int64
-      responses:
-        204:
-          description: pet deleted
+            $ref: '#/definitions/astronauts'
         default:
           description: unexpected error
           schema:
@@ -112,6 +94,21 @@ definitions:
       id:
         type: integer
       status:
+        type: boolean
+  astronauts:
+    required:
+      - id
+      - firstName
+      - lastName
+      - isInSpace
+    properties:
+      id:
+        type: integer
+      firstName:
+        type: string
+      lastName:
+        type: string
+      isInSpace:
         type: boolean
   Error:
     required:
