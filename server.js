@@ -31,5 +31,17 @@ app.post('/addAstronaut', function(req, res) {
 	res.send("");
 });
 
+app.get('/astronaut', function(req, res) {
+	var id = req.query.id;
+	var found;
+	for(var i = 0; i < astronauts.length; i++)
+		if(astronauts[i].id == id)
+			found = astronauts[i]
+	if(found != null)
+		res.send(found);
+	else
+		res.send("not found");
+});
+
 app.listen(port);
 
