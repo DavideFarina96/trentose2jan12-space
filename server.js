@@ -20,6 +20,20 @@ app.get('/api/status', function(req, res) {
 		res.send("not found");
 });
 
+app.post('/api/status', function(req, res) {
+	var id = req.body.id;
+	var status = req.body.status;
+	var found;
+	for(var i = 0; i < astronauts.length; i++)
+	{
+		if(astronauts[i].id == id)
+		{
+			astronauts[i].status = status;
+		}
+	}
+	res.send("");
+});
+
 app.get('/api/astronauts', function(req, res) {
 	res.send(astronauts);
 });
