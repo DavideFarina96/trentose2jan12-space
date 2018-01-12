@@ -8,7 +8,7 @@ var astronauts = [{id: 0, firstName: "John", lastName: "Smith", isInSpace: true}
 
 var port = process.env.PORT || 8080;
 
-app.get('/status', function(req, res) {
+app.get('/api/status', function(req, res) {
 	var id = req.query.id;
 	var found;
 	for(var i = 0; i < astronauts.length; i++)
@@ -20,18 +20,31 @@ app.get('/status', function(req, res) {
 		res.send("not found");
 });
 
-app.get('/astronauts', function(req, res) {
+app.get('/api/astronauts', function(req, res) {
 	res.send(astronauts);
 });
 
-app.post('/addAstronaut', function(req, res) {
+app.post('/api/addAstronaut', function(req, res) {
 	var toAdd = req.body; //senza id
 	astronauts.push(toAdd);
 	astronauts[astronauts.length - 1].id = astronauts.length - 1; //setto l'id
 	res.send("");
 });
 
-app.get('/astronaut', function(req, res) {
+app.put('/api/astronaut', function(req, res) {
+	var id = req.body.id;
+	for(var i = 0; i < astronauts.length; i++)
+	{
+		if(astronauts[i].id == id)
+		{
+			astronauts[i].firstName = req.body.firstName;
+			astronauts[i].lastName = req.body.lastName;
+			astronauts[i].isInSpace = req.body.isInSpace;
+		}
+	}
+});
+
+app.get('/api/astronaut', function(req, res) {
 	var id = req.query.id;
 	var found;
 	for(var i = 0; i < astronauts.length; i++)
